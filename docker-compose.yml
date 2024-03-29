@@ -1,4 +1,4 @@
-version: "3"
+version: "3.3"
 services:
   api:
     build: . # build from Dockerfile in current directory
@@ -7,8 +7,13 @@ services:
       - "3001:3001"
       - "9005:9005"
     environment: # set environment variables
-      - NODE_ENV=production
       - MONGO_URL=mongodb://test:test@mongo:27017/test
       - MONGO_USERNAME=test
       - MONGO_PASSWORD=test
-      - BASE_URI=https://revochat.org
+      - MONGO_HOST=192.168.0.1
+      - MONGO_PORT=27017
+      - API_PORT=3000
+      - API_URL=http://localhost:3000
+      - SOCKET_URL=ws://localhost:3001
+      - SOCKET_PORT=3001
+      - PEERJS_PORT=9005
