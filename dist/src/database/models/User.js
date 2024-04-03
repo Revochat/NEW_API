@@ -29,7 +29,7 @@ const RevoUserSchema = new mongoose_1.Schema({
     token: { type: String, required: true },
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    avatar: { type: String, required: false, default: "default" },
+    avatar: { type: String, required: false, default: "http://cdn.revochat.org/uploads/avatar/65ba0fdb2fc8b6574169bbd2/120493874.png_1712161920094.png" },
     status: { type: String, required: true, default: "offline" },
     servers: { type: Array, required: true, default: [] },
     channels: { type: Array, required: true, default: [] },

@@ -114,11 +114,11 @@ class Autoload {
     }
     static rules() {
         Autoload.app.use((req, res, next) => {
-            res.header("Access-Control-Allow-Origin", "*");
+            res.header("*");
             res.header('Content-Type', 'application/json');
-            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Allow-Control-Allow-Headers');
             if (req.method === 'OPTIONS') {
-                res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
+                res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
                 return res.status(200).json({});
             }
             next();

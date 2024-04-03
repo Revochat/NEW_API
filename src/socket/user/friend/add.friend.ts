@@ -49,16 +49,16 @@ export default {
                 await userDocument.save(); // save the user document
                 await friend.save(); // save the friend document
 
-                socket.emit(UTILS.EVENTS.User.GetFriends, { user: userDocument }); // send the updated user to the user
-                socket.to(friend.user_id).emit(UTILS.EVENTS.User.GetFriends, { user: friend }); // send the updated user to the friend
+                socket.emit(UTILS.EVENTS.User.GetFriends, { user: UTILS.removeSensitiveData(friend) }); // send the updated user to the user
+                socket.to(friend.user_id).emit(UTILS.EVENTS.User.GetFriends, { user: UTILS.removeSensitiveData(userDocument) }); // send the updated user to the friend
 
             } else { // if the user doesn't have a friend request from the friend
                 userDocument.friends_requests_sent.push(friend.user_id); // add the friend to the user's friend requests sent
                 friend.friends_requests_received.push(user.user_id); // add the user to the friend's friend requests received
                 await userDocument.save(); // save the user document
                 await friend.save(); // save the friend document
-                socket.to(friend.user_id).emit(UTILS.EVENTS.User.GetFriendRequestsReceived, { user: friend }); // send the updated user to the user
-                socket.emit(UTILS.EVENTS.User.GetFriendRequestsSent, { user: userDocument }); // send the updated user to the friend
+                socket.to(friend.user_id).emit(UTILS.EVENTS.User.GetFriendRequestsReceived, { user: UTILS.removeSensitiveData(userDocument) }); // send the updated user to the friend
+                socket.emit(UTILS.EVENTS.User.GetFriendRequestsSent, { user: UTILS.removeSensitiveData(friend) }); // send the updated user to the user
             }
         }
         catch (error) {
