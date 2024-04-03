@@ -139,7 +139,7 @@ export class Autoload { // This is the class that starts the server
 
     protected static rules() { // This is the function that sets the API rules
         Autoload.app.use((req, res, next) => {
-        res.header("Access-Control-Allow-Origin", "*");
+        res.header("*");
         res.header('Content-Type', 'application/json')
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Allow-Control-Allow-Headers');
         if (req.method === 'OPTIONS') {
