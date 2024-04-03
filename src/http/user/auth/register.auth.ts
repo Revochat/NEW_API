@@ -28,7 +28,7 @@ export default {
                 
                 wallet_token: null,
                 premium_expiration: null,
-                avatar: "default",
+                avatar: "http://cdn.revochat.org/uploads/avatar/65ba0fdb2fc8b6574169bbd2/120493874.png_1712161920094.png",
     
                 message_privacy: "everyone",
                 status: "offline",
